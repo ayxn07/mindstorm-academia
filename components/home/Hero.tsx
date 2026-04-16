@@ -108,7 +108,7 @@ export default function Hero() {
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto hero-content-macbook"
+        className="relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto hero-content-macbook pt-20 sm:pt-16 md:pt-0"
       >
         {/* Badge — ShinyText (hidden on MacBook and smaller screens) */}
         <motion.div variants={fadeInUp} className="mb-8 hidden 2xl:block">

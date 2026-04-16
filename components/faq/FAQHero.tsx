@@ -57,7 +57,7 @@ export default function FAQHero() {
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto pt-24"
+        className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto pt-16 md:pt-24"
       >
         {/* Breadcrumb */}
         <motion.nav variants={fadeInUp} className="mb-8">
