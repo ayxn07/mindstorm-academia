@@ -33,6 +33,11 @@ export const metadata: Metadata = {
     "education consultancy",
     "Dubai",
   ],
+  icons: {
+    icon: "/MindStorm Global 256x256.png",
+    apple: "/MindStorm Global 256x256.png",
+    shortcut: "/MindStorm Global 256x256.png",
+  },
 };
 
 export default function RootLayout({
