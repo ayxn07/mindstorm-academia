@@ -213,7 +213,7 @@ function MobileMenu({
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="fixed inset-0 z-[90] flex flex-col"
+          className="fixed inset-0 z-[90] flex flex-col overflow-hidden"
           style={{
             background:
               "linear-gradient(180deg, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.99) 100%)",

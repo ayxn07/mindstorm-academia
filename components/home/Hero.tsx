@@ -110,8 +110,8 @@ export default function Hero() {
         animate="visible"
         className="relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto hero-content-macbook"
       >
-        {/* Badge — ShinyText */}
-        <motion.div variants={fadeInUp} className="mb-8">
+        {/* Badge — ShinyText (hidden on MacBook and smaller screens) */}
+        <motion.div variants={fadeInUp} className="mb-8 hidden 2xl:block">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-medium tracking-wider uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] animate-pulse" />
             <ShinyText

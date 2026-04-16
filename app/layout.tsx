@@ -97,9 +97,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${geistMono.variable} h-full antialiased overflow-x-hidden`}
     >
-      <body className="min-h-full flex flex-col bg-black text-[var(--color-text)]">
+      <body className="min-h-full flex flex-col bg-black text-[var(--color-text)] overflow-x-hidden">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

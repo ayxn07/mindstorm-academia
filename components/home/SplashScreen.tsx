@@ -261,7 +261,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           className="mb-4"
           style={{ opacity: 0, transform: "translateY(30px)" }}
         >
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient-gold tracking-tight">
+          <h1 className="text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-gradient-gold tracking-tight">
             Welcome to Excellence
           </h1>
         </div>
