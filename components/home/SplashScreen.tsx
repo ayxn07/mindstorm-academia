@@ -188,7 +188,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           initialVelocityX={{ min: -15, max: 15 }}
           initialVelocityY={{ min: -30, max: 10 }}
           confettiSource={{
-            x: windowSize.width / 2,
+            x: windowSize.width / 2 - 10,
             y: windowSize.height / 2 - 100,
             w: 100,
             h: 50,

@@ -224,6 +224,6 @@ body {
 /* MacBook screen size fix - extra padding for hero content */
 @media (min-width: 1280px) and (max-width: 1440px) {
   .hero-content-macbook {
-    padding-top: 4rem;
+    padding-top: 6rem;
   }
 }
