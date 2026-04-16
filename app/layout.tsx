@@ -17,8 +17,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const BASE_URL = "https://www.mindstormglobaledu.com";
+
 export const metadata: Metadata = {
-  title: "Mindstorm Strategic Consulting | Global Education Excellence",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Mindstorm Strategic Consulting | Global Education Excellence",
+    template: "%s | Mindstorm Strategic Consulting",
+  },
   description:
     "Your gateway to global education. Study in Canada, Australia, Europe, Russia & UAE with complete professional guidance. University admissions, visa processing, and pre-departure support.",
   keywords: [
@@ -32,11 +38,54 @@ export const metadata: Metadata = {
     "Mindstorm",
     "education consultancy",
     "Dubai",
+    "international students",
+    "study visa",
   ],
+  authors: [{ name: "Mindstorm Strategic Consulting", url: BASE_URL }],
+  creator: "Mindstorm Strategic Consulting",
+  publisher: "Mindstorm Strategic Consulting",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: BASE_URL,
+    siteName: "Mindstorm Strategic Consulting",
+    title: "Mindstorm Strategic Consulting | Global Education Excellence",
+    description:
+      "Your gateway to global education. Study in Canada, Australia, Europe, Russia & UAE with complete professional guidance.",
+    images: [
+      {
+        url: "/MindStorm Global 256x256.png",
+        width: 256,
+        height: 256,
+        alt: "Mindstorm Strategic Consulting",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mindstorm Strategic Consulting | Global Education Excellence",
+    description:
+      "Your gateway to global education. Study in Canada, Australia, Europe, Russia & UAE with complete professional guidance.",
+    images: ["/MindStorm Global 256x256.png"],
+  },
   icons: {
     icon: "/MindStorm Global 256x256.png",
     apple: "/MindStorm Global 256x256.png",
     shortcut: "/MindStorm Global 256x256.png",
+  },
+  alternates: {
+    canonical: BASE_URL,
   },
 };
 
