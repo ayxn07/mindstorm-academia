@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import CountUp from "@/components/CountUp";
 
 const stats = [
   { value: 500, suffix: "+", label: "Students Placed" },
@@ -10,45 +10,6 @@ const stats = [
   { value: 5, suffix: "", label: "Countries" },
   { value: 95, suffix: "%", label: "Visa Success Rate" },
 ];
-
-function AnimatedCounter({
-  value,
-  suffix,
-  duration = 2,
-}: {
-  value: number;
-  suffix: string;
-  duration?: number;
-}) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    let start = 0;
-    const increment = value / (duration * 60);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 1000 / 60);
-
-    return () => clearInterval(timer);
-  }, [isInView, value, duration]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {count}
-      {suffix}
-    </span>
-  );
-}
 
 export default function StatsBar() {
   return (
@@ -74,11 +35,16 @@ export default function StatsBar() {
                 variants={fadeInUp}
                 className="text-center"
               >
-                <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--color-primary)] mb-2">
-                  <AnimatedCounter
-                    value={stat.value}
-                    suffix={stat.suffix}
+                <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--color-primary)] mb-2 tabular-nums">
+                  <CountUp
+                    to={stat.value}
+                    from={0}
+                    duration={2.5}
+                    delay={i * 0.15}
+                    separator=","
+                    className="tabular-nums"
                   />
+                  {stat.suffix}
                 </div>
                 <p className="text-sm sm:text-base text-[var(--color-text-muted)]">
                   {stat.label}

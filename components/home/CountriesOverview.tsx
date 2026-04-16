@@ -8,7 +8,8 @@ import {
   staggerContainer,
   viewportOnce,
 } from "@/lib/animations";
-import TiltCard from "@/components/ui/TiltCard";
+import BorderGlow from "@/components/BorderGlow";
+import ShinyText from "@/components/ShinyText";
 
 const countries = [
   {
@@ -58,6 +59,76 @@ const countries = [
   },
 ];
 
+function CountryCard({ country }: { country: (typeof countries)[0] }) {
+  return (
+    <BorderGlow
+      backgroundColor="#0a0a0a"
+      borderRadius={30}
+      glowColor="45 70 60"
+      colors={["#d7be59", "#e5d285", "#b89e3a"]}
+      edgeSensitivity={3}
+      glowRadius={35}
+      glowIntensity={3}
+      coneSpread={30}
+      className="h-full"
+    >
+      <Link
+        href={country.href}
+        className="group block h-full overflow-hidden"
+        style={{ borderRadius: 30 }}
+      >
+        {/* Image */}
+        <div className="relative h-44 overflow-hidden">
+          <Image
+            src={country.image}
+            alt={`Study in ${country.name}`}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+          {/* Country name overlay */}
+          <div className="absolute bottom-4 left-5">
+            <h3
+              className="text-2xl font-bold group-hover:text-[#d7be59] transition-colors duration-300"
+              style={{ color: "#fff" }}
+            >
+              {country.name}
+            </h3>
+            <span className="text-xs font-medium" style={{ color: "#d7be59" }}>
+              {country.highlight}
+            </span>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-5">
+          <p className="text-sm leading-relaxed mb-4" style={{ color: "#999" }}>
+            {country.tagline}
+          </p>
+          <div className="flex items-center justify-between">
+            <span
+              className="text-xs px-3 py-1 rounded-full"
+              style={{ color: "#666", background: "rgba(255,255,255,0.05)" }}
+            >
+              {country.fees}
+            </span>
+            <span
+              className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1"
+              style={{ color: "#d7be59" }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </Link>
+    </BorderGlow>
+  );
+}
+
 export default function CountriesOverview() {
   return (
     <section className="relative">
@@ -69,22 +140,28 @@ export default function CountriesOverview() {
           viewport={viewportOnce}
           className="text-center mb-16"
         >
-          <motion.p
-            variants={fadeInUp}
-            className="text-[var(--color-primary)] text-sm font-medium tracking-widest uppercase mb-3"
-          >
-            Destinations
-          </motion.p>
+          <motion.div variants={fadeInUp} className="mb-3">
+            <ShinyText
+              text="Destinations"
+              color="#d7be59"
+              shineColor="#f5ecc8"
+              speed={3}
+              spread={120}
+              className="text-sm font-medium tracking-widest uppercase"
+            />
+          </motion.div>
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-5"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5"
+            style={{ color: "#eeeeee" }}
           >
             Study Across{" "}
             <span className="text-gradient-gold">5 Countries</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-[var(--color-text-muted)] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+            style={{ color: "#999" }}
           >
             We provide complete admission services across the world&apos;s most
             sought-after education destinations.
@@ -101,51 +178,7 @@ export default function CountriesOverview() {
         >
           {countries.slice(0, 3).map((country, i) => (
             <motion.div key={i} variants={fadeInUp}>
-              <TiltCard className="h-full" tiltIntensity={10}>
-                <Link
-                  href={country.href}
-                  className="group block h-full rounded-2xl card-3d overflow-hidden"
-                >
-                  {/* Image */}
-                  <div className="relative h-44 overflow-hidden">
-                    <Image
-                      src={country.image}
-                      alt={`Study in ${country.name}`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    {/* Country name overlay */}
-                    <div className="absolute bottom-4 left-5">
-                      <h3 className="text-2xl font-bold text-white group-hover:text-[var(--color-primary)] transition-colors duration-300">
-                        {country.name}
-                      </h3>
-                      <span className="text-xs text-[var(--color-primary)] font-medium">
-                        {country.highlight}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5">
-                    <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
-                      {country.tagline}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-[var(--color-text-dim)] px-3 py-1 rounded-full bg-white/5">
-                        {country.fees}
-                      </span>
-                      <span className="text-[var(--color-primary)] opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </TiltCard>
+              <CountryCard country={country} />
             </motion.div>
           ))}
         </motion.div>
@@ -160,47 +193,7 @@ export default function CountriesOverview() {
         >
           {countries.slice(3).map((country, i) => (
             <motion.div key={i} variants={fadeInUp}>
-              <TiltCard className="h-full" tiltIntensity={10}>
-                <Link
-                  href={country.href}
-                  className="group block h-full rounded-2xl card-3d overflow-hidden"
-                >
-                  <div className="relative h-44 overflow-hidden">
-                    <Image
-                      src={country.image}
-                      alt={`Study in ${country.name}`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 640px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    <div className="absolute bottom-4 left-5">
-                      <h3 className="text-2xl font-bold text-white group-hover:text-[var(--color-primary)] transition-colors duration-300">
-                        {country.name}
-                      </h3>
-                      <span className="text-xs text-[var(--color-primary)] font-medium">
-                        {country.highlight}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-5">
-                    <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
-                      {country.tagline}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-[var(--color-text-dim)] px-3 py-1 rounded-full bg-white/5">
-                        {country.fees}
-                      </span>
-                      <span className="text-[var(--color-primary)] opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </TiltCard>
+              <CountryCard country={country} />
             </motion.div>
           ))}
         </motion.div>

@@ -1,47 +1,196 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { navItems, type NavItem } from "@/data/navigation";
+import { navItems, countryMeta } from "@/data/navigation";
+import BorderGlow from "@/components/BorderGlow";
 import {
-  navDropdown,
   mobileMenuOverlay,
   mobileMenuItem,
   mobileMenuStagger,
   springSmooth,
 } from "@/lib/animations";
 
-/* ─── Desktop dropdown ─── */
-function DropdownMenu({ items }: { items: NavItem[] }) {
+/* ─── Shared inline style objects ─── */
+const navbarBaseStyle: React.CSSProperties = {
+  background:
+    "linear-gradient(180deg, rgba(28,26,22,0.92) 0%, rgba(16,15,12,0.90) 50%, rgba(10,9,7,0.94) 100%)",
+  border: "1px solid rgba(215,190,89,0.18)",
+  boxShadow:
+    "0 12px 40px -4px rgba(0,0,0,0.7), 0 4px 16px -2px rgba(0,0,0,0.5), 0 0 60px -20px rgba(215,190,89,0.08), inset 0 1px 0 0 rgba(255,255,255,0.14), inset 0 2px 4px 0 rgba(255,255,255,0.04), inset 0 -1px 0 0 rgba(0,0,0,0.4), inset 0 -2px 6px 0 rgba(0,0,0,0.2)",
+};
+
+const navbarScrolledStyle: React.CSSProperties = {
+  background:
+    "linear-gradient(180deg, rgba(24,22,18,0.96) 0%, rgba(12,11,9,0.95) 50%, rgba(6,5,4,0.97) 100%)",
+  border: "1px solid rgba(215,190,89,0.22)",
+  boxShadow:
+    "0 16px 48px -4px rgba(0,0,0,0.8), 0 6px 20px -2px rgba(0,0,0,0.6), 0 0 80px -20px rgba(215,190,89,0.06), inset 0 1px 0 0 rgba(255,255,255,0.12), inset 0 2px 4px 0 rgba(255,255,255,0.03), inset 0 -1px 0 0 rgba(0,0,0,0.5), inset 0 -2px 6px 0 rgba(0,0,0,0.25)",
+};
+
+const goldButtonStyle: React.CSSProperties = {
+  background: "linear-gradient(180deg, #e5d285 0%, #d7be59 40%, #c4a940 100%)",
+  color: "#000",
+  border: "1px solid rgba(255,255,255,0.15)",
+  boxShadow:
+    "0 4px 12px -2px rgba(0,0,0,0.5), 0 2px 4px -1px rgba(0,0,0,0.3), 0 0 20px -4px rgba(215,190,89,0.25), inset 0 1px 0 0 rgba(255,255,255,0.35), inset 0 2px 4px 0 rgba(255,255,255,0.1), inset 0 -1px 0 0 rgba(0,0,0,0.15), inset 0 -2px 4px 0 rgba(0,0,0,0.08)",
+};
+
+const megaMenuStyle: React.CSSProperties = {
+  background:
+    "linear-gradient(180deg, rgba(18,17,14,0.97) 0%, rgba(10,9,7,0.98) 100%)",
+  border: "1px solid rgba(215,190,89,0.15)",
+  boxShadow:
+    "0 20px 60px -10px rgba(0,0,0,0.8), 0 8px 24px -4px rgba(0,0,0,0.5), 0 0 80px -20px rgba(215,190,89,0.06), inset 0 1px 0 0 rgba(255,255,255,0.08)",
+};
+
+/* ─── Mega Menu (rendered relative to <nav>, centered) ─── */
+function MegaMenu({ onMouseEnter, onMouseLeave }: { onMouseEnter: () => void; onMouseLeave: () => void }) {
   return (
     <motion.div
-      variants={navDropdown}
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
-      className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-56 rounded-2xl glass-strong p-2"
+      initial={{ opacity: 0, y: 10, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 10, scale: 0.98 }}
+      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-2xl p-6 z-50"
+      style={{
+        ...megaMenuStyle,
+        width: "min(95vw, 1100px)",
+      }}
     >
-      {/* Caret */}
+      {/* Top shine */}
       <div
-        className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rotate-45 rounded-sm"
+        className="absolute inset-x-4 top-0 h-px pointer-events-none"
         style={{
-          background: "linear-gradient(135deg, rgba(40,38,32,0.9), rgba(22,21,18,0.85))",
-          borderLeft: "1px solid rgba(215,190,89,0.20)",
-          borderTop: "1px solid rgba(215,190,89,0.20)",
-          boxShadow: "inset 0 1px 0 0 rgba(255,255,255,0.10)",
+          background:
+            "linear-gradient(90deg, transparent 0%, rgba(215,190,89,0.2) 30%, rgba(255,255,255,0.1) 50%, rgba(215,190,89,0.2) 70%, transparent 100%)",
         }}
       />
-      {items.map((child) => (
-        <Link
-          key={child.href}
-          href={child.href}
-          className="block px-4 py-2.5 rounded-xl text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 nav-link-3d"
-        >
-          {child.label}
-        </Link>
-      ))}
+
+      <div className="grid grid-cols-5 gap-4">
+        {countryMeta.map((country) => (
+          <BorderGlow
+            key={country.name}
+            backgroundColor="#0d0c0a"
+            borderRadius={30}
+            glowColor="45 70 60"
+            colors={["#d7be59", "#e5d285", "#b89e3a"]}
+            edgeSensitivity={3}
+            glowRadius={25}
+            glowIntensity={3}
+            coneSpread={30}
+            animated
+          >
+            <Link
+              href={country.href}
+              className="group block p-3 h-full"
+              style={{ borderRadius: 30 }}
+            >
+              {/* Country image */}
+              <div className="relative h-24 rounded-lg overflow-hidden mb-3">
+                <Image
+                  src={country.image}
+                  alt={`Study in ${country.name}`}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="200px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-2 left-2.5">
+                  <h3 className="text-base font-bold text-white group-hover:text-[#d7be59] transition-colors duration-300">
+                    {country.name}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Tagline */}
+              <p className="text-xs leading-relaxed mb-3" style={{ color: "#999" }}>
+                {country.tagline}
+              </p>
+
+              {/* Stats grid */}
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#d7be59" strokeWidth="2" className="mt-0.5 flex-shrink-0">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                  <div>
+                    <span className="text-[10px] uppercase tracking-wider block" style={{ color: "#666" }}>
+                      Fees
+                    </span>
+                    <span className="text-xs font-medium" style={{ color: "#ccc" }}>
+                      {country.fees}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#d7be59" strokeWidth="2" className="mt-0.5 flex-shrink-0">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                  </svg>
+                  <div>
+                    <span className="text-[10px] uppercase tracking-wider block" style={{ color: "#666" }}>
+                      Work Rights
+                    </span>
+                    <span className="text-xs" style={{ color: "#ccc" }}>
+                      {country.workRights}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#d7be59" strokeWidth="2" className="mt-0.5 flex-shrink-0">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                  </svg>
+                  <div>
+                    <span className="text-[10px] uppercase tracking-wider block" style={{ color: "#666" }}>
+                      Visa Type
+                    </span>
+                    <span className="text-xs" style={{ color: "#ccc" }}>
+                      {country.visaType}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#d7be59" strokeWidth="2" className="mt-0.5 flex-shrink-0">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5" />
+                  </svg>
+                  <div>
+                    <span className="text-[10px] uppercase tracking-wider block" style={{ color: "#666" }}>
+                      Top Universities
+                    </span>
+                    <span className="text-xs" style={{ color: "#ccc" }}>
+                      {country.topUniversities.join(", ")}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Learn more link */}
+              <div
+                className="mt-3 flex items-center gap-1 text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-300"
+                style={{ color: "#d7be59" }}
+              >
+                Learn more
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </div>
+            </Link>
+          </BorderGlow>
+        ))}
+      </div>
     </motion.div>
   );
 }
@@ -66,32 +215,28 @@ function MobileMenu({
           exit="hidden"
           className="fixed inset-0 z-[90] flex flex-col"
           style={{
-            background: "linear-gradient(180deg, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.99) 100%)",
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.99) 100%)",
           }}
         >
           {/* Decorative gold radial glow */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[var(--color-primary)] opacity-[0.04] blur-[150px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[var(--color-primary)] opacity-[0.02] blur-[100px] pointer-events-none" />
+          <div
+            className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, rgba(215,190,89,0.04) 0%, transparent 70%)",
+              filter: "blur(80px)",
+            }}
+          />
+          <div
+            className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, rgba(215,190,89,0.02) 0%, transparent 70%)",
+              filter: "blur(60px)",
+            }}
+          />
 
-          {/* Close button */}
-          <div className="flex justify-end p-6">
-            <button
-              onClick={onClose}
-              aria-label="Close menu"
-              className="w-10 h-10 flex items-center justify-center"
-            >
-              <motion.div
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                transition={{ delay: 0.3, ...springSmooth }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2" strokeLinecap="round">
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </motion.div>
-            </button>
-          </div>
+          {/* Top spacer — close is handled by the hamburger button (z-101) above the overlay */}
+          <div className="h-20" />
 
           {/* Menu items */}
           <motion.nav
@@ -106,17 +251,37 @@ function MobileMenu({
                   <div>
                     <button
                       onClick={() =>
-                        setExpandedItem(expandedItem === item.label ? null : item.label)
+                        setExpandedItem(
+                          expandedItem === item.label ? null : item.label
+                        )
                       }
-                      className="w-full flex items-center justify-between py-4 text-3xl font-semibold text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors duration-200"
+                      className="w-full flex items-center justify-between py-4 text-3xl font-semibold transition-colors duration-200"
+                      style={{ color: "#eeeeee" }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.color = "#d7be59")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.color = "#eeeeee")
+                      }
                     >
                       {item.label}
                       <motion.span
-                        animate={{ rotate: expandedItem === item.label ? 180 : 0 }}
+                        animate={{
+                          rotate: expandedItem === item.label ? 180 : 0,
+                        }}
                         transition={springSmooth}
-                        className="text-[var(--color-primary)] text-lg"
+                        style={{ color: "#d7be59" }}
+                        className="text-lg"
                       >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        >
                           <polyline points="6 9 12 15 18 9" />
                         </svg>
                       </motion.span>
@@ -128,14 +293,24 @@ function MobileMenu({
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="overflow-hidden pl-4 border-l border-[var(--glass-border)]"
+                          className="overflow-hidden pl-4"
+                          style={{
+                            borderLeft: "1px solid rgba(215,190,89,0.15)",
+                          }}
                         >
                           {item.children.map((child) => (
                             <Link
                               key={child.href}
                               href={child.href}
                               onClick={onClose}
-                              className="block py-3 text-lg text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors duration-200"
+                              className="block py-3 text-lg transition-colors duration-200"
+                              style={{ color: "#999" }}
+                              onMouseEnter={(e) =>
+                                (e.currentTarget.style.color = "#d7be59")
+                              }
+                              onMouseLeave={(e) =>
+                                (e.currentTarget.style.color = "#999")
+                              }
                             >
                               {child.label}
                             </Link>
@@ -148,7 +323,14 @@ function MobileMenu({
                   <Link
                     href={item.href}
                     onClick={onClose}
-                    className="block py-4 text-3xl font-semibold text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors duration-200"
+                    className="block py-4 text-3xl font-semibold transition-colors duration-200"
+                    style={{ color: "#eeeeee" }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "#d7be59")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "#eeeeee")
+                    }
                   >
                     {item.label}
                   </Link>
@@ -161,14 +343,15 @@ function MobileMenu({
               <Link
                 href="/contact"
                 onClick={onClose}
-                className="inline-flex items-center justify-center w-full py-4 rounded-full btn-3d-gold text-black font-semibold text-lg"
+                className="inline-flex items-center justify-center w-full py-4 rounded-full font-semibold text-lg"
+                style={goldButtonStyle}
               >
                 Book Free Consultation
               </Link>
             </motion.div>
           </motion.nav>
 
-          <div className="px-8 pb-8 text-sm text-[var(--color-text-dim)]">
+          <div className="px-8 pb-8 text-sm" style={{ color: "#666" }}>
             <p>Dubai &middot; Bangalore &middot; Mohali</p>
           </div>
         </motion.div>
@@ -182,6 +365,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -196,6 +380,20 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
+  const handleDropdownEnter = (label: string) => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
+    }
+    setActiveDropdown(label);
+  };
+
+  const handleDropdownLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 200);
+  };
+
   return (
     <>
       <motion.header
@@ -204,25 +402,40 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
         className="fixed top-0 left-0 right-0 z-[100] flex justify-center px-4 pt-4"
       >
-        <nav
-          className={`
-            relative flex items-center justify-between w-full max-w-6xl
-            rounded-full px-6 transition-all duration-500 glass-navbar
-            ${scrolled ? "py-2.5 scrolled" : "py-3"}
-          `}
+        <BorderGlow
+          backgroundColor="#0a0a0a"
+          borderRadius={9999}
+          glowColor="45 70 60"
+          colors={["#d7be59", "#e5d285", "#b89e3a"]}
+          edgeSensitivity={3}
+          glowRadius={25}
+          glowIntensity={3}
+          coneSpread={30}
+          animated
+          className="w-full max-w-6xl"
         >
-          {/* Top shine edge — gives illusion of light hitting the top */}
+        <nav
+          className="relative flex items-center justify-between w-full rounded-full px-6 transition-all duration-500"
+          style={{
+            ...(scrolled ? navbarScrolledStyle : navbarBaseStyle),
+            padding: scrolled ? "0.75rem 1.5rem" : "0.9rem 1.5rem",
+            borderRadius: 9999,
+          }}
+        >
+          {/* Top shine edge */}
           <div
             className="absolute inset-x-3 top-0 h-px rounded-full pointer-events-none"
             style={{
-              background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 30%, rgba(215,190,89,0.12) 50%, rgba(255,255,255,0.15) 70%, transparent 100%)",
+              background:
+                "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 30%, rgba(215,190,89,0.12) 50%, rgba(255,255,255,0.15) 70%, transparent 100%)",
             }}
           />
           {/* Bottom shadow edge */}
           <div
             className="absolute inset-x-6 bottom-0 h-px rounded-full pointer-events-none"
             style={{
-              background: "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.3) 70%, transparent 100%)",
+              background:
+                "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.3) 70%, transparent 100%)",
             }}
           />
 
@@ -244,11 +457,26 @@ export default function Navbar() {
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => item.children && setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseEnter={() =>
+                  item.children
+                    ? handleDropdownEnter(item.label)
+                    : undefined
+                }
+                onMouseLeave={
+                  item.children ? handleDropdownLeave : undefined
+                }
               >
                 {item.children ? (
-                  <button className="px-4 py-2 text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 flex items-center gap-1.5 nav-link-3d">
+                  <button
+                    className="px-4 py-2 text-sm font-medium transition-all duration-300 flex items-center gap-1.5 rounded-full"
+                    style={{ color: "#999" }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "#d7be59")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "#999")
+                    }
+                  >
                     {item.label}
                     <motion.svg
                       width="12"
@@ -258,7 +486,10 @@ export default function Navbar() {
                       stroke="currentColor"
                       strokeWidth="2.5"
                       strokeLinecap="round"
-                      animate={{ rotate: activeDropdown === item.label ? 180 : 0 }}
+                      animate={{
+                        rotate:
+                          activeDropdown === item.label ? 180 : 0,
+                      }}
                       transition={{ duration: 0.2 }}
                     >
                       <polyline points="6 9 12 15 18 9" />
@@ -267,17 +498,18 @@ export default function Navbar() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="px-4 py-2 text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 nav-link-3d inline-block"
+                    className="px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full inline-block"
+                    style={{ color: "#999" }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "#d7be59")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "#999")
+                    }
                   >
                     {item.label}
                   </Link>
                 )}
-
-                <AnimatePresence>
-                  {item.children && activeDropdown === item.label && (
-                    <DropdownMenu items={item.children} />
-                  )}
-                </AnimatePresence>
               </div>
             ))}
           </div>
@@ -286,9 +518,10 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/contact"
-              className="px-5 py-2 rounded-full text-sm font-semibold text-black btn-3d-gold"
+              className="px-5 py-2 rounded-full text-sm font-semibold transition-transform duration-200 hover:-translate-y-0.5"
+              style={goldButtonStyle}
             >
-              Get Started
+              Contact Us
             </Link>
           </div>
 
@@ -310,9 +543,14 @@ export default function Navbar() {
                 style={{ backgroundColor: "#eeeeee" }}
               />
               <motion.span
-                animate={mobileOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                animate={
+                  mobileOpen
+                    ? { opacity: 0, scaleX: 0 }
+                    : { opacity: 1, scaleX: 1 }
+                }
                 transition={{ duration: 0.2 }}
-                className="block h-0.5 w-full rounded-full bg-[var(--color-text)]"
+                className="block h-0.5 w-full rounded-full"
+                style={{ backgroundColor: "#eeeeee" }}
               />
               <motion.span
                 animate={
@@ -326,7 +564,18 @@ export default function Navbar() {
               />
             </div>
           </button>
+
+          {/* ─── Mega Menu — positioned relative to <nav> center ─── */}
+          <AnimatePresence>
+            {activeDropdown === "Study Abroad" && (
+              <MegaMenu
+                onMouseEnter={() => handleDropdownEnter("Study Abroad")}
+                onMouseLeave={handleDropdownLeave}
+              />
+            )}
+          </AnimatePresence>
         </nav>
+        </BorderGlow>
       </motion.header>
 
       <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />

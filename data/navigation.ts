@@ -4,6 +4,17 @@ export interface NavItem {
   children?: NavItem[];
 }
 
+export interface CountryMeta {
+  name: string;
+  href: string;
+  tagline: string;
+  image: string;
+  fees: string;
+  workRights: string;
+  visaType: string;
+  topUniversities: string[];
+}
+
 export const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -20,5 +31,63 @@ export const navItems: NavItem[] = [
     ],
   },
   { label: "Process", href: "/process" },
-  { label: "Contact", href: "/contact" },
+  { label: "Career Guidance", href: "/career-guidance" },
+];
+
+export const countryMeta: CountryMeta[] = [
+  {
+    name: "Canada",
+    href: "/study/canada",
+    tagline: "World-class education & immigration pathways",
+    image:
+      "https://images.pexels.com/photos/1519088/pexels-photo-1519088.jpeg?auto=compress&cs=tinysrgb&w=400",
+    fees: "CAD 15K–35K / yr",
+    workRights: "20 hrs/week during study, full-time PGWP",
+    visaType: "Study Permit",
+    topUniversities: ["U of Toronto", "UBC", "McGill", "Waterloo"],
+  },
+  {
+    name: "Australia",
+    href: "/study/australia",
+    tagline: "Globally ranked universities & work rights",
+    image:
+      "https://images.pexels.com/photos/1619854/pexels-photo-1619854.jpeg?auto=compress&cs=tinysrgb&w=400",
+    fees: "AUD 20K–45K / yr",
+    workRights: "48 hrs/fortnight during study, full-time post-study",
+    visaType: "Student Visa (500)",
+    topUniversities: ["U of Melbourne", "ANU", "UNSW", "U of Sydney"],
+  },
+  {
+    name: "Europe",
+    href: "/study/europe",
+    tagline: "Affordable education with Schengen mobility",
+    image:
+      "https://images.pexels.com/photos/2570063/pexels-photo-2570063.jpeg?auto=compress&cs=tinysrgb&w=400",
+    fees: "EUR 0–15K / yr",
+    workRights: "20 hrs/week, post-study job-seeker visa",
+    visaType: "Student Residence Permit",
+    topUniversities: ["TU Munich", "Sorbonne", "Politecnico Milano", "KTH"],
+  },
+  {
+    name: "Russia",
+    href: "/study/russia",
+    tagline: "Affordable STEM & medical education",
+    image:
+      "https://images.pexels.com/photos/236294/pexels-photo-236294.jpeg?auto=compress&cs=tinysrgb&w=400",
+    fees: "USD 2K–8K / yr",
+    workRights: "20 hrs/week with work permit",
+    visaType: "Study Visa",
+    topUniversities: ["MSU", "ITMO", "SPbPU", "Kazan Federal"],
+  },
+  {
+    name: "UAE",
+    href: "/study/uae",
+    tagline: "International degrees in a global hub",
+    image:
+      "https://images.pexels.com/photos/2115367/pexels-photo-2115367.jpeg?auto=compress&cs=tinysrgb&w=400",
+    fees: "AED 30K–80K / yr",
+    workRights: "Part-time allowed, post-study work visa",
+    visaType: "Student Residence Visa",
+    topUniversities: ["Khalifa Univ", "AUS", "UAEU", "Heriot-Watt Dubai"],
+  },
 ];

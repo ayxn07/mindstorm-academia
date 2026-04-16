@@ -7,7 +7,8 @@ import {
   staggerContainer,
   viewportOnce,
 } from "@/lib/animations";
-import TiltCard from "@/components/ui/TiltCard";
+import BorderGlow from "@/components/BorderGlow";
+import ShinyText from "@/components/ShinyText";
 
 const studentTypes = [
   {
@@ -79,21 +80,27 @@ export default function WhoWeHelp() {
           viewport={viewportOnce}
           className="text-center mb-16"
         >
-          <motion.p
-            variants={fadeInUp}
-            className="text-[var(--color-primary)] text-sm font-medium tracking-widest uppercase mb-3"
-          >
-            Who We Serve
-          </motion.p>
+          <motion.div variants={fadeInUp} className="mb-3">
+            <ShinyText
+              text="Who We Serve"
+              color="#d7be59"
+              shineColor="#f5ecc8"
+              speed={3}
+              spread={120}
+              className="text-sm font-medium tracking-widest uppercase"
+            />
+          </motion.div>
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-5"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5"
+            style={{ color: "#eeeeee" }}
           >
             Built for <span className="text-gradient-gold">Every Ambition</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-[var(--color-text-muted)] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+            style={{ color: "#999" }}
           >
             Whether you&apos;re just finishing school or looking to advance your
             career with a postgraduate degree, we have the expertise to guide you.
@@ -109,8 +116,18 @@ export default function WhoWeHelp() {
         >
           {studentTypes.map((item, i) => (
             <motion.div key={i} variants={fadeInUp}>
-              <TiltCard className="h-full" tiltIntensity={8}>
-                <div className="group relative flex gap-0 h-full rounded-2xl card-3d overflow-hidden">
+              <BorderGlow
+                backgroundColor="#0a0a0a"
+                borderRadius={30}
+                glowColor="45 70 60"
+                colors={["#d7be59", "#e5d285", "#b89e3a"]}
+                edgeSensitivity={3}
+                glowRadius={35}
+                glowIntensity={3}
+                coneSpread={30}
+                className="h-full"
+              >
+                <div className="group relative flex gap-0 h-full overflow-hidden" style={{ borderRadius: 30 }}>
                   {/* Left image strip */}
                   <div className="relative hidden sm:block w-32 flex-shrink-0 overflow-hidden">
                     <Image
@@ -125,20 +142,29 @@ export default function WhoWeHelp() {
 
                   {/* Content */}
                   <div className="flex gap-4 p-6 sm:p-7">
-                    <div className="flex-shrink-0 w-11 h-11 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] group-hover:bg-[var(--color-primary)]/20 transition-colors duration-300">
+                    <div
+                      className="flex-shrink-0 w-11 h-11 rounded-lg flex items-center justify-center transition-colors duration-300"
+                      style={{
+                        background: "rgba(215,190,89,0.1)",
+                        color: "#d7be59",
+                      }}
+                    >
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-[var(--color-text)] mb-2 group-hover:text-[var(--color-primary)] transition-colors duration-300">
+                      <h3
+                        className="text-lg font-semibold mb-2 group-hover:text-[#d7be59] transition-colors duration-300"
+                        style={{ color: "#eeeeee" }}
+                      >
                         {item.title}
                       </h3>
-                      <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                      <p className="text-sm leading-relaxed" style={{ color: "#999" }}>
                         {item.description}
                       </p>
                     </div>
                   </div>
                 </div>
-              </TiltCard>
+              </BorderGlow>
             </motion.div>
           ))}
         </motion.div>

@@ -9,6 +9,9 @@ import {
   staggerContainer,
   buttonHover,
 } from "@/lib/animations";
+import LightRays from "@/components/LightRays";
+import SplitText from "@/components/SplitText";
+import ShinyText from "@/components/ShinyText";
 
 const heroImages = [
   {
@@ -46,7 +49,7 @@ export default function Hero() {
   }, [nextImage]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* ─── Full-screen carousel background ─── */}
       <div className="absolute inset-0">
         <AnimatePresence mode="popLayout">
@@ -107,25 +110,63 @@ export default function Hero() {
         animate="visible"
         className="relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto"
       >
-        {/* Badge */}
+        {/* Badge — ShinyText */}
         <motion.div variants={fadeInUp} className="mb-8">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-medium text-[var(--color-primary)] tracking-wider uppercase">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-medium tracking-wider uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] animate-pulse" />
-            Trusted Education Consultancy
+            <ShinyText
+              text="Trusted Education Consultancy"
+              color="#d7be59"
+              shineColor="#f5ecc8"
+              speed={3}
+              spread={120}
+            />
           </span>
         </motion.div>
 
-        {/* Headline */}
-        <motion.h1
-          variants={fadeInUp}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-6"
-        >
-          <span className="text-white">Your Gateway to</span>
-          <br />
-          <span className="text-gradient-gold">Global Education</span>
-          <br />
-          <span className="text-white">Excellence</span>
-        </motion.h1>
+        {/* Headline — SplitText for animated reveal */}
+        <motion.div variants={fadeInUp} className="mb-6">
+          <SplitText
+            text="Your Gateway to"
+            tag="h1"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-white"
+            splitType="chars"
+            delay={30}
+            duration={0.8}
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            textAlign="center"
+            rootMargin="0px"
+            threshold={0.1}
+          />
+          <SplitText
+            text="Global Education"
+            tag="h1"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
+            style={{ color: "#d7be59" }}
+            splitType="chars"
+            delay={30}
+            duration={0.8}
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            textAlign="center"
+            rootMargin="0px"
+            threshold={0.1}
+          />
+          <SplitText
+            text="Excellence"
+            tag="h1"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-white"
+            splitType="chars"
+            delay={30}
+            duration={0.8}
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            textAlign="center"
+            rootMargin="0px"
+            threshold={0.1}
+          />
+        </motion.div>
 
         {/* Subtitle */}
         <motion.p
@@ -144,7 +185,13 @@ export default function Hero() {
           <motion.div variants={buttonHover} initial="rest" whileHover="hover" whileTap="tap">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-black font-semibold text-base btn-3d-gold"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-transform duration-200"
+              style={{
+                background: "linear-gradient(180deg, #e5d285 0%, #d7be59 40%, #c4a940 100%)",
+                color: "#000",
+                border: "1px solid rgba(255,255,255,0.15)",
+                boxShadow: "0 4px 12px -2px rgba(0,0,0,0.5), 0 2px 4px -1px rgba(0,0,0,0.3), 0 0 20px -4px rgba(215,190,89,0.25), inset 0 1px 0 0 rgba(255,255,255,0.35), inset 0 2px 4px 0 rgba(255,255,255,0.1), inset 0 -1px 0 0 rgba(0,0,0,0.15), inset 0 -2px 4px 0 rgba(0,0,0,0.08)",
+              }}
             >
               Book Free Consultation
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -156,7 +203,13 @@ export default function Hero() {
           <motion.div variants={buttonHover} initial="rest" whileHover="hover" whileTap="tap">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-medium text-base btn-3d-outline"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-base transition-transform duration-200"
+              style={{
+                background: "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+                color: "#eeeeee",
+                border: "1px solid rgba(215,190,89,0.25)",
+                boxShadow: "0 4px 12px -2px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.2), inset 0 1px 0 0 rgba(255,255,255,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.2)",
+              }}
             >
               Explore Services
             </Link>
@@ -207,6 +260,26 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </motion.div>
+
+      {/* ─── LightRays overlay — on top of everything ─── */}
+      <div
+        className="absolute inset-0 z-20 pointer-events-none"
+        style={{ opacity: 0.35 }}
+      >
+        <LightRays
+          raysOrigin="bottom-center"
+          raysColor="#d7be59"
+          raysSpeed={1}
+          lightSpread={1.5}
+          rayLength={3}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0}
+          distortion={0}
+          fadeDistance={2}
+          saturation={1}
+        />
+      </div>
     </section>
   );
 }

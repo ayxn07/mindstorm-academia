@@ -8,7 +8,8 @@ import {
   viewportOnce,
   lineDraw,
 } from "@/lib/animations";
-import TiltCard from "@/components/ui/TiltCard";
+import BorderGlow from "@/components/BorderGlow";
+import ShinyText from "@/components/ShinyText";
 
 const propositions = [
   {
@@ -74,7 +75,11 @@ export default function ValueProposition() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="w-full h-px bg-gradient-to-r from-transparent via-[var(--color-primary)]/20 to-transparent"
+        className="w-full h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 0%, rgba(215,190,89,0.2) 50%, transparent 100%)",
+        }}
       />
 
       <div className="section-container">
@@ -85,22 +90,28 @@ export default function ValueProposition() {
           viewport={viewportOnce}
           className="text-center mb-16"
         >
-          <motion.p
-            variants={fadeInUp}
-            className="text-[var(--color-primary)] text-sm font-medium tracking-widest uppercase mb-3"
-          >
-            Our Approach
-          </motion.p>
+          <motion.div variants={fadeInUp} className="mb-3">
+            <ShinyText
+              text="Our Approach"
+              color="#d7be59"
+              shineColor="#f5ecc8"
+              speed={3}
+              spread={120}
+              className="text-sm font-medium tracking-widest uppercase"
+            />
+          </motion.div>
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-5"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5"
+            style={{ color: "#eeeeee" }}
           >
             We Build International{" "}
             <span className="text-gradient-gold">Academic Pathways</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-[var(--color-text-muted)] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+            style={{ color: "#999" }}
           >
             At Mindstorm Global, we don&apos;t just process applications &mdash; we
             architect complete international education journeys through
@@ -117,8 +128,18 @@ export default function ValueProposition() {
         >
           {propositions.map((item, index) => (
             <motion.div key={index} variants={fadeInUp}>
-              <TiltCard className="h-full" tiltIntensity={12}>
-                <div className="group relative h-full rounded-2xl card-3d overflow-hidden">
+              <BorderGlow
+                backgroundColor="#0a0a0a"
+                borderRadius={30}
+                glowColor="45 70 60"
+                colors={["#d7be59", "#e5d285", "#b89e3a"]}
+                edgeSensitivity={3}
+                glowRadius={35}
+                glowIntensity={3}
+                coneSpread={30}
+                className="h-full"
+              >
+                <div className="group relative h-full overflow-hidden" style={{ borderRadius: 30 }}>
                   {/* Image */}
                   <div className="relative h-40 overflow-hidden">
                     <Image
@@ -133,18 +154,27 @@ export default function ValueProposition() {
 
                   {/* Content */}
                   <div className="p-6">
-                    <div className="w-10 h-10 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-4 group-hover:bg-[var(--color-primary)]/20 transition-colors duration-300">
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300"
+                      style={{
+                        background: "rgba(215,190,89,0.1)",
+                        color: "#d7be59",
+                      }}
+                    >
                       {item.icon}
                     </div>
-                    <h3 className="text-base font-semibold text-[var(--color-text)] mb-2 group-hover:text-[var(--color-primary)] transition-colors duration-300">
+                    <h3
+                      className="text-base font-semibold mb-2 group-hover:text-[#d7be59] transition-colors duration-300"
+                      style={{ color: "#eeeeee" }}
+                    >
                       {item.title}
                     </h3>
-                    <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                    <p className="text-sm leading-relaxed" style={{ color: "#999" }}>
                       {item.description}
                     </p>
                   </div>
                 </div>
-              </TiltCard>
+              </BorderGlow>
             </motion.div>
           ))}
         </motion.div>

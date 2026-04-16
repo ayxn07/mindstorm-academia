@@ -5,6 +5,8 @@ import WhyMindstorm from "@/components/home/WhyMindstorm";
 import CountriesOverview from "@/components/home/CountriesOverview";
 import StatsBar from "@/components/home/StatsBar";
 import CTASection from "@/components/home/CTASection";
+import TestimonialsMasonry from "@/components/testimonials/TestimonialsMasonry";
+import FAQAccordion from "@/components/faq/FAQAccordion";
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
       <CountriesOverview />
       <StatsBar />
       <CTASection />
+      <TestimonialsMasonry />
+      <FAQAccordion />
     </>
   );
 }
