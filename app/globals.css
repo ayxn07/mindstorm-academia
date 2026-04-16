@@ -176,9 +176,12 @@ body {
 
 /* Floating particle keyframes */
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-12px) rotate(2deg); }
-  66% { transform: translateY(6px) rotate(-1deg); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }
 
 @keyframes pulse-gold {
@@ -215,5 +218,12 @@ body {
   }
   html {
     @apply font-sans;
+  }
+}
+
+/* MacBook screen size fix - extra padding for hero content */
+@media (min-width: 1280px) and (max-width: 1440px) {
+  .hero-content-macbook {
+    padding-top: 4rem;
   }
 }
