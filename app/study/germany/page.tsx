@@ -15,50 +15,50 @@ import FloatingApplyButton from "@/components/study/FloatingApplyButton";
 const BASE_URL = "https://www.mindstormglobaledu.com";
 
 export const metadata: Metadata = {
-  title: "Study in Australia",
+  title: "Study in Germany",
   description:
-    "Complete guide to studying in Australia — top universities, admission requirements, visa process, costs, and work rights. Expert guidance from Mindstorm.",
+    "Complete guide to studying in Germany — tuition-free public universities, world-class engineering, post-study Job Seeker Visa, and admission requirements.",
   keywords: [
-    "study in Australia",
-    "Australia student visa",
-    "Australian universities",
-    "student visa subclass 500",
-    "study abroad Australia",
-    "undergraduate Australia",
-    "postgraduate Australia",
-    "Australian education",
-    "work while studying Australia",
+    "study in Germany",
+    "tuition free universities Germany",
+    "German universities",
+    "TU Munich",
+    "Germany student visa",
+    "study engineering Germany",
+    "DAAD scholarship",
+    "study abroad Germany",
+    "APS certificate",
   ],
   alternates: {
-    canonical: `${BASE_URL}/study/australia`,
+    canonical: `${BASE_URL}/study/germany`,
   },
   openGraph: {
-    title: "Study in Australia | Mindstorm Strategic Consulting",
+    title: "Study in Germany | Mindstorm Strategic Consulting",
     description:
-      "Top universities, admission requirements, visa process, costs, and work rights — everything you need to study in Australia.",
-    url: `${BASE_URL}/study/australia`,
+      "Tuition-free public universities, engineering excellence, and an 18-month Job Seeker Visa post-study.",
+    url: `${BASE_URL}/study/germany`,
     type: "website",
     images: [
       {
         url: "/MindStorm Global 256x256.png",
         width: 256,
         height: 256,
-        alt: "Study in Australia with Mindstorm",
+        alt: "Study in Germany with Mindstorm",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Study in Australia | Mindstorm Strategic Consulting",
+    title: "Study in Germany | Mindstorm Strategic Consulting",
     description:
-      "Top universities, admission requirements, visa process, costs, and work rights — everything you need to study in Australia.",
+      "Tuition-free public universities, engineering excellence, and an 18-month Job Seeker Visa post-study.",
     images: ["/MindStorm Global 256x256.png"],
   },
 };
 
-const country = countries.australia;
+const country = countries.germany;
 
-export default function AustraliaPage() {
+export default function GermanyPage() {
   return (
     <>
       <CountryHero country={country} />
@@ -71,7 +71,7 @@ export default function AustraliaPage() {
       <CountryCTA country={country} />
       <TestimonialsMasonry />
       <FAQAccordion />
-      <FloatingApplyButton countrySlug="australia" countryName="Australia" />
+      <FloatingApplyButton countrySlug="germany" countryName="Germany" />
     </>
   );
 }

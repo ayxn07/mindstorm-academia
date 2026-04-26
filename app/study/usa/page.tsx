@@ -15,50 +15,50 @@ import FloatingApplyButton from "@/components/study/FloatingApplyButton";
 const BASE_URL = "https://www.mindstormglobaledu.com";
 
 export const metadata: Metadata = {
-  title: "Study in Australia",
+  title: "Study in the USA",
   description:
-    "Complete guide to studying in Australia — top universities, admission requirements, visa process, costs, and work rights. Expert guidance from Mindstorm.",
+    "Complete guide to studying in the USA — Ivy League universities, F-1 visa, OPT and STEM extension, admission requirements, and living costs.",
   keywords: [
-    "study in Australia",
-    "Australia student visa",
-    "Australian universities",
-    "student visa subclass 500",
-    "study abroad Australia",
-    "undergraduate Australia",
-    "postgraduate Australia",
-    "Australian education",
-    "work while studying Australia",
+    "study in USA",
+    "US universities",
+    "F-1 visa",
+    "OPT STEM extension",
+    "Ivy League admissions",
+    "MIT Stanford Harvard",
+    "USA student visa",
+    "study abroad USA",
+    "I-20 form",
   ],
   alternates: {
-    canonical: `${BASE_URL}/study/australia`,
+    canonical: `${BASE_URL}/study/usa`,
   },
   openGraph: {
-    title: "Study in Australia | Mindstorm Strategic Consulting",
+    title: "Study in the USA | Mindstorm Strategic Consulting",
     description:
-      "Top universities, admission requirements, visa process, costs, and work rights — everything you need to study in Australia.",
-    url: `${BASE_URL}/study/australia`,
+      "Top US universities, the F-1 visa process, and OPT + STEM extension pathways — full guide.",
+    url: `${BASE_URL}/study/usa`,
     type: "website",
     images: [
       {
         url: "/MindStorm Global 256x256.png",
         width: 256,
         height: 256,
-        alt: "Study in Australia with Mindstorm",
+        alt: "Study in the USA with Mindstorm",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Study in Australia | Mindstorm Strategic Consulting",
+    title: "Study in the USA | Mindstorm Strategic Consulting",
     description:
-      "Top universities, admission requirements, visa process, costs, and work rights — everything you need to study in Australia.",
+      "Top US universities, the F-1 visa process, and OPT + STEM extension pathways — full guide.",
     images: ["/MindStorm Global 256x256.png"],
   },
 };
 
-const country = countries.australia;
+const country = countries.usa;
 
-export default function AustraliaPage() {
+export default function USAPage() {
   return (
     <>
       <CountryHero country={country} />
@@ -71,7 +71,7 @@ export default function AustraliaPage() {
       <CountryCTA country={country} />
       <TestimonialsMasonry />
       <FAQAccordion />
-      <FloatingApplyButton countrySlug="australia" countryName="Australia" />
+      <FloatingApplyButton countrySlug="usa" countryName="United States" />
     </>
   );
 }

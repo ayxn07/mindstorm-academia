@@ -15,50 +15,50 @@ import FloatingApplyButton from "@/components/study/FloatingApplyButton";
 const BASE_URL = "https://www.mindstormglobaledu.com";
 
 export const metadata: Metadata = {
-  title: "Study in Australia",
+  title: "Study in the UK",
   description:
-    "Complete guide to studying in Australia — top universities, admission requirements, visa process, costs, and work rights. Expert guidance from Mindstorm.",
+    "Complete guide to studying in the United Kingdom — Russell Group universities, the 2-year Graduate Route post-study work visa, admission requirements, and costs.",
   keywords: [
-    "study in Australia",
-    "Australia student visa",
-    "Australian universities",
-    "student visa subclass 500",
-    "study abroad Australia",
-    "undergraduate Australia",
-    "postgraduate Australia",
-    "Australian education",
-    "work while studying Australia",
+    "study in UK",
+    "study in United Kingdom",
+    "UK universities",
+    "Russell Group",
+    "Oxford Cambridge admissions",
+    "Graduate Route visa",
+    "UK student visa",
+    "Tier 4 visa",
+    "study abroad UK",
   ],
   alternates: {
-    canonical: `${BASE_URL}/study/australia`,
+    canonical: `${BASE_URL}/study/uk`,
   },
   openGraph: {
-    title: "Study in Australia | Mindstorm Strategic Consulting",
+    title: "Study in the UK | Mindstorm Strategic Consulting",
     description:
-      "Top universities, admission requirements, visa process, costs, and work rights — everything you need to study in Australia.",
-    url: `${BASE_URL}/study/australia`,
+      "World-renowned UK universities with the 2-year Graduate Route — admissions, costs, and visa process.",
+    url: `${BASE_URL}/study/uk`,
     type: "website",
     images: [
       {
         url: "/MindStorm Global 256x256.png",
         width: 256,
         height: 256,
-        alt: "Study in Australia with Mindstorm",
+        alt: "Study in the UK with Mindstorm",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Study in Australia | Mindstorm Strategic Consulting",
+    title: "Study in the UK | Mindstorm Strategic Consulting",
     description:
-      "Top universities, admission requirements, visa process, costs, and work rights — everything you need to study in Australia.",
+      "World-renowned UK universities with the 2-year Graduate Route — admissions, costs, and visa process.",
     images: ["/MindStorm Global 256x256.png"],
   },
 };
 
-const country = countries.australia;
+const country = countries.uk;
 
-export default function AustraliaPage() {
+export default function UKPage() {
   return (
     <>
       <CountryHero country={country} />
@@ -71,7 +71,7 @@ export default function AustraliaPage() {
       <CountryCTA country={country} />
       <TestimonialsMasonry />
       <FAQAccordion />
-      <FloatingApplyButton countrySlug="australia" countryName="Australia" />
+      <FloatingApplyButton countrySlug="uk" countryName="United Kingdom" />
     </>
   );
 }

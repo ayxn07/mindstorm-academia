@@ -700,4 +700,599 @@ export const countries: Record<string, CountryData> = {
       { label: "Avg Processing Time", value: "3 weeks" },
     ],
   },
+  germany: {
+    slug: "germany",
+    name: "Germany",
+    fullName: "Germany",
+    tagline: "Tuition-free public universities & engineering excellence",
+    heroImage:
+      "https://images.pexels.com/photos/2570063/pexels-photo-2570063.jpeg?auto=compress&cs=tinysrgb&w=1260",
+    flagEmoji: "🇩🇪",
+    overviewImage: "https://images.pexels.com/photos/109629/pexels-photo-109629.jpeg?auto=compress&cs=tinysrgb&w=800",
+    galleryImages: [
+      "https://images.pexels.com/photos/161901/berlin-cathedral-dom-places-of-interest-architecture-161901.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/1098460/pexels-photo-1098460.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/2070485/pexels-photo-2070485.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/1850619/pexels-photo-1850619.jpeg?auto=compress&cs=tinysrgb&w=600",
+    ],
+    overview: {
+      description:
+        "Germany is Europe's economic engine and a global leader in engineering, automotive, and applied research. Most public universities charge no tuition fees — even for international students — making it one of the highest-value study destinations in the world. Strong industry links translate directly into internships and employment.",
+      highlights: [
+        "Tuition-free public universities (semester fee only)",
+        "18-month post-study Job Seeker Visa",
+        "World-leading engineering & research",
+        "Strong economy with low youth unemployment",
+      ],
+      studentPopulation: "470,000+",
+      qualityRanking: "Top 5 in Europe",
+    },
+    whyStudy: [
+      {
+        title: "Tuition-Free Education",
+        description:
+          "Most German public universities charge no tuition for bachelor's and many master's programs, regardless of nationality. Students typically pay only a small semester contribution (€150–350) covering admin and public transport.",
+      },
+      {
+        title: "Engineering & Research Powerhouse",
+        description:
+          "Home to TU Munich, RWTH Aachen, and the Max Planck Institutes, Germany leads globally in mechanical engineering, automotive, renewable energy, and applied sciences with strong industry collaboration.",
+      },
+      {
+        title: "Stay-Back & Work Rights",
+        description:
+          "After graduation, international students can stay 18 months on a Job Seeker Visa to find skilled employment. Working 20 hours/week during studies is permitted, and the EU Blue Card offers a fast track to PR.",
+      },
+      {
+        title: "Heart of Europe",
+        description:
+          "Schengen mobility lets you travel freely across 27 countries. Germany's central location, world-class infrastructure, and rich cultural heritage offer unmatched lifestyle value.",
+      },
+    ],
+    universities: [
+      {
+        name: "Technical University of Munich (TUM)",
+        location: "Munich, Bavaria",
+        ranking: "Top 30 globally",
+        programs: ["Mechanical Engineering", "Computer Science", "Physics", "Informatics"],
+      },
+      {
+        name: "Ludwig Maximilian University (LMU)",
+        location: "Munich, Bavaria",
+        ranking: "Top 60 globally",
+        programs: ["Medicine", "Law", "Economics", "Natural Sciences"],
+      },
+      {
+        name: "RWTH Aachen University",
+        location: "Aachen, NRW",
+        ranking: "Top 110 globally",
+        programs: ["Engineering", "Materials Science", "Architecture", "Computer Science"],
+      },
+      {
+        name: "Heidelberg University",
+        location: "Heidelberg, Baden-Württemberg",
+        ranking: "Top 90 globally",
+        programs: ["Medicine", "Life Sciences", "Physics", "Humanities"],
+      },
+    ],
+    admissionRequirements: [
+      { title: "Academic Transcripts", details: "Recognized secondary or bachelor's degree; APS Certificate required for Indian and Chinese applicants" },
+      { title: "Language Proficiency", details: "IELTS 6.5+/TOEFL 90+ for English programs; TestDaF 4 or DSH 2 for German-taught programs" },
+      { title: "Statement of Purpose", details: "Motivation letter detailing academic background and program fit" },
+      { title: "Letters of Recommendation", details: "1-2 academic references" },
+      { title: "Blocked Account", details: "€11,208/year (current rate) deposited in a German blocked account as proof of funds" },
+      { title: "Health Insurance", details: "Public or recognized private German health insurance is mandatory" },
+    ],
+    costOfLiving: {
+      tuitionRange: "EUR 0 – 3,000 / year (public); EUR 10,000 – 20,000 (private)",
+      currency: "EUR",
+      scholarshipNote: "DAAD scholarships, Deutschlandstipendium, and Erasmus+ offer monthly stipends and full-tuition awards.",
+      items: [
+        { category: "Accommodation", range: "EUR 350 – 700 / month" },
+        { category: "Food & Groceries", range: "EUR 200 – 300 / month" },
+        { category: "Transportation", range: "EUR 30 – 80 / month (often included in semester fee)" },
+        { category: "Health Insurance", range: "EUR 110 – 130 / month" },
+        { category: "Books & Supplies", range: "EUR 30 – 50 / month" },
+        { category: "Personal Expenses", range: "EUR 150 – 250 / month" },
+      ],
+    },
+    visaProcess: {
+      visaType: "Student Visa (National D Visa)",
+      processingTime: "6-12 weeks",
+      steps: [
+        { step: 1, title: "University Admission", description: "Receive your Letter of Admission (Zulassungsbescheid) from a recognized German university" },
+        { step: 2, title: "Open Blocked Account", description: "Deposit ~€11,208 in a German blocked account (Sperrkonto) as proof of financial means" },
+        { step: 3, title: "Health Insurance", description: "Obtain provisional German health insurance coverage" },
+        { step: 4, title: "Visa Application", description: "Apply at the German Embassy with admission letter, passport, biometrics, APS, and financial proof" },
+        { step: 5, title: "Travel & Register", description: "Travel to Germany within visa validity, register address (Anmeldung), and convert to residence permit" },
+      ],
+    },
+    workRights: "20 hrs/week (or 120 full days/year) during studies; 18-month Job Seeker Visa after graduation; EU Blue Card pathway to PR",
+    stats: [
+      { label: "Partner Universities", value: "25+" },
+      { label: "Visa Success Rate", value: "92%" },
+      { label: "Students Placed", value: "500+" },
+      { label: "Avg Processing Time", value: "8 weeks" },
+    ],
+  },
+  uk: {
+    slug: "uk",
+    name: "UK",
+    fullName: "United Kingdom",
+    tagline: "Russell Group prestige & 2-year Graduate Route",
+    heroImage:
+      "https://images.pexels.com/photos/427679/pexels-photo-427679.jpeg?auto=compress&cs=tinysrgb&w=1260",
+    flagEmoji: "🇬🇧",
+    overviewImage: "https://images.pexels.com/photos/220887/pexels-photo-220887.jpeg?auto=compress&cs=tinysrgb&w=800",
+    galleryImages: [
+      "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/672532/pexels-photo-672532.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/672358/pexels-photo-672358.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/1796736/pexels-photo-1796736.jpeg?auto=compress&cs=tinysrgb&w=600",
+    ],
+    overview: {
+      description:
+        "The United Kingdom hosts four of the world's top ten universities and centuries-old institutions like Oxford and Cambridge. With a globally respected qualifications framework, shorter degree durations, and the new 2-year Graduate Route post-study work visa, the UK remains one of the most attractive destinations for ambitious students.",
+      highlights: [
+        "4 of world's top 10 universities",
+        "Graduate Route — 2 years post-study work (3 for PhD)",
+        "Shorter degrees: 3-year UG, 1-year PG",
+        "English-medium instruction",
+      ],
+      studentPopulation: "680,000+",
+      qualityRanking: "Top 3 globally",
+    },
+    whyStudy: [
+      {
+        title: "World-Renowned Universities",
+        description:
+          "Oxford, Cambridge, Imperial, and UCL routinely rank in the global top 10. UK degrees carry global brand recognition and signal academic rigor to employers worldwide.",
+      },
+      {
+        title: "Faster, Focused Degrees",
+        description:
+          "Bachelor's degrees take 3 years and master's just 1 year — saving you both time and money compared to the US or Australia, while delivering equivalent outcomes.",
+      },
+      {
+        title: "Graduate Route Visa",
+        description:
+          "After completing your degree, you can stay in the UK for 2 years (3 for PhD) to work or look for work — no employer sponsorship needed during this period.",
+      },
+      {
+        title: "Cultural & Career Hub",
+        description:
+          "London is one of the world's leading hubs for finance, tech, fashion, and creative industries. Internship and graduate-scheme opportunities are plentiful.",
+      },
+    ],
+    universities: [
+      {
+        name: "University of Oxford",
+        location: "Oxford, England",
+        ranking: "Top 5 globally",
+        programs: ["Philosophy, Politics & Economics", "Law", "Medicine", "Computer Science"],
+      },
+      {
+        name: "University of Cambridge",
+        location: "Cambridge, England",
+        ranking: "Top 5 globally",
+        programs: ["Natural Sciences", "Engineering", "Mathematics", "Economics"],
+      },
+      {
+        name: "Imperial College London",
+        location: "London",
+        ranking: "Top 10 globally",
+        programs: ["Engineering", "Medicine", "Business", "Computing"],
+      },
+      {
+        name: "University College London (UCL)",
+        location: "London",
+        ranking: "Top 10 globally",
+        programs: ["Architecture", "Education", "Neuroscience", "Economics"],
+      },
+      {
+        name: "University of Edinburgh",
+        location: "Edinburgh, Scotland",
+        ranking: "Top 30 globally",
+        programs: ["AI", "Veterinary Medicine", "Linguistics", "Business"],
+      },
+    ],
+    admissionRequirements: [
+      { title: "Academic Transcripts", details: "Strong academic record — typically 70%+ for UG; 60-65%+ for PG (Russell Group expects higher)" },
+      { title: "English Proficiency", details: "IELTS 6.0-7.5 (UKVI), TOEFL 90+, or PTE 62+ depending on program and institution" },
+      { title: "Personal Statement", details: "UCAS personal statement (UG) or motivation letter (PG) detailing academic interests and goals" },
+      { title: "Letters of Recommendation", details: "1-2 academic references; work references for MBA-style programs" },
+      { title: "Financial Proof", details: "£1,334/month (London) or £1,023/month (outside) for 9 months held for 28 days" },
+      { title: "CAS Statement", details: "Confirmation of Acceptance for Studies issued by your university — required for visa application" },
+    ],
+    costOfLiving: {
+      tuitionRange: "GBP 12,000 – 38,000 / year",
+      currency: "GBP",
+      scholarshipNote: "Chevening, Commonwealth, GREAT, and university-specific scholarships cover partial to full tuition for international students.",
+      items: [
+        { category: "Accommodation", range: "GBP 600 – 1,400 / month (London higher)" },
+        { category: "Food & Groceries", range: "GBP 200 – 350 / month" },
+        { category: "Transportation", range: "GBP 60 – 180 / month" },
+        { category: "Health (NHS surcharge)", range: "GBP 776 / year" },
+        { category: "Books & Supplies", range: "GBP 200 – 500 / year" },
+        { category: "Personal Expenses", range: "GBP 150 – 300 / month" },
+      ],
+    },
+    visaProcess: {
+      visaType: "Student Visa (Student Route)",
+      processingTime: "3-8 weeks",
+      steps: [
+        { step: 1, title: "Receive CAS", description: "Get your Confirmation of Acceptance for Studies from a UK-licensed sponsor university" },
+        { step: 2, title: "Pay IHS & Fees", description: "Pay the Immigration Health Surcharge (£776/year) and visa application fee online" },
+        { step: 3, title: "Submit Application", description: "Apply online via gov.uk, upload passport, CAS, financial documents, and English test scores" },
+        { step: 4, title: "Biometrics Appointment", description: "Visit a UK Visa Application Centre for fingerprints and photo" },
+        { step: 5, title: "Decision & Travel", description: "Receive decision in 3 weeks (typical), collect BRP after arrival in the UK" },
+      ],
+    },
+    workRights: "20 hrs/week during term, full-time during vacations; Graduate Route grants 2 years (3 for PhD) of full work rights post-study",
+    stats: [
+      { label: "Partner Universities", value: "40+" },
+      { label: "Visa Success Rate", value: "96%" },
+      { label: "Students Placed", value: "900+" },
+      { label: "Avg Processing Time", value: "4 weeks" },
+    ],
+  },
+  usa: {
+    slug: "usa",
+    name: "USA",
+    fullName: "United States of America",
+    tagline: "Ivy League prestige with OPT & STEM extension pathways",
+    heroImage:
+      "https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=1260",
+    flagEmoji: "🇺🇸",
+    overviewImage: "https://images.pexels.com/photos/2129796/pexels-photo-2129796.jpeg?auto=compress&cs=tinysrgb&w=800",
+    galleryImages: [
+      "https://images.pexels.com/photos/1339121/pexels-photo-1339121.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/2190283/pexels-photo-2190283.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/64271/queen-mary-university-of-london-uk-london-school-64271.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/1239162/pexels-photo-1239162.jpeg?auto=compress&cs=tinysrgb&w=600",
+    ],
+    overview: {
+      description:
+        "The United States hosts more top-100 universities than any other country and remains the world's largest destination for international students. Cutting-edge research facilities, the Optional Practical Training (OPT) program, and a 24-month STEM extension make the US uniquely valuable for career-focused students.",
+      highlights: [
+        "Home to MIT, Harvard, Stanford & 50+ top-100 universities",
+        "OPT — 12 months work post-study (36 for STEM)",
+        "Largest research funding in the world",
+        "Diverse academic flexibility & majors",
+      ],
+      studentPopulation: "1,000,000+",
+      qualityRanking: "#1 globally",
+    },
+    whyStudy: [
+      {
+        title: "Unmatched Academic Reputation",
+        description:
+          "The US dominates global university rankings with institutions like MIT, Stanford, and Harvard. American degrees signal world-class quality to employers and graduate schools globally.",
+      },
+      {
+        title: "OPT & STEM Extension",
+        description:
+          "F-1 students get 12 months of Optional Practical Training (OPT) after graduation. STEM graduates qualify for an additional 24 months — a total of 3 years of US work experience.",
+      },
+      {
+        title: "Research & Innovation",
+        description:
+          "US universities receive the world's largest research funding pool. Students gain hands-on experience with state-of-the-art labs, professors who lead their fields, and Silicon Valley industry links.",
+      },
+      {
+        title: "Flexible Curriculum",
+        description:
+          "American universities encourage interdisciplinary study with majors, minors, double majors, and a liberal arts foundation, letting you shape your degree around your interests.",
+      },
+    ],
+    universities: [
+      {
+        name: "Massachusetts Institute of Technology (MIT)",
+        location: "Cambridge, Massachusetts",
+        ranking: "Top 3 globally",
+        programs: ["Computer Science", "Engineering", "Physics", "Economics"],
+      },
+      {
+        name: "Stanford University",
+        location: "Stanford, California",
+        ranking: "Top 5 globally",
+        programs: ["Computer Science", "Business", "Engineering", "Medicine"],
+      },
+      {
+        name: "Harvard University",
+        location: "Cambridge, Massachusetts",
+        ranking: "Top 5 globally",
+        programs: ["Law", "Medicine", "Business", "Public Policy"],
+      },
+      {
+        name: "University of California, Berkeley",
+        location: "Berkeley, California",
+        ranking: "Top 15 globally",
+        programs: ["EECS", "Data Science", "Business", "Environmental Science"],
+      },
+      {
+        name: "Carnegie Mellon University",
+        location: "Pittsburgh, Pennsylvania",
+        ranking: "Top 50 globally",
+        programs: ["Computer Science", "AI", "Robotics", "Design"],
+      },
+    ],
+    admissionRequirements: [
+      { title: "Academic Transcripts", details: "Strong GPA (3.0+/4.0 typical; 3.5+ for top universities)" },
+      { title: "Standardized Tests", details: "SAT/ACT for UG (test-optional at many); GRE/GMAT for PG (varies by program)" },
+      { title: "English Proficiency", details: "TOEFL 80-100+ iBT or IELTS 6.5-7.5" },
+      { title: "Statement of Purpose & Essays", details: "SOP plus university-specific essays detailing goals, interests, and fit" },
+      { title: "Letters of Recommendation", details: "2-3 academic and/or professional references" },
+      { title: "Financial Proof (I-20)", details: "Bank statement covering 1 year of tuition + living expenses (typically USD 50,000-80,000)" },
+    ],
+    costOfLiving: {
+      tuitionRange: "USD 25,000 – 60,000 / year",
+      currency: "USD",
+      scholarshipNote: "Fulbright, university-specific merit scholarships, and graduate assistantships (TA/RA) can cover partial to full tuition plus stipend.",
+      items: [
+        { category: "Accommodation", range: "USD 800 – 2,000 / month" },
+        { category: "Food & Groceries", range: "USD 350 – 600 / month" },
+        { category: "Transportation", range: "USD 80 – 200 / month" },
+        { category: "Health Insurance", range: "USD 1,500 – 2,500 / year" },
+        { category: "Books & Supplies", range: "USD 1,000 – 1,500 / year" },
+        { category: "Personal Expenses", range: "USD 200 – 500 / month" },
+      ],
+    },
+    visaProcess: {
+      visaType: "F-1 Student Visa",
+      processingTime: "3-10 weeks",
+      steps: [
+        { step: 1, title: "Receive I-20", description: "Get the I-20 form from your SEVP-approved university after admission and financial verification" },
+        { step: 2, title: "Pay SEVIS Fee", description: "Pay the SEVIS I-901 fee (USD 350) online and keep the receipt" },
+        { step: 3, title: "Complete DS-160", description: "Fill out the DS-160 nonimmigrant visa application form online" },
+        { step: 4, title: "Schedule Interview", description: "Book a visa interview at the nearest US Embassy or Consulate" },
+        { step: 5, title: "Visa Interview", description: "Attend with I-20, DS-160 confirmation, SEVIS receipt, financial documents, and academic records" },
+        { step: 6, title: "Receive Visa", description: "Visa issued in passport; travel up to 30 days before program start" },
+      ],
+    },
+    workRights: "On-campus 20 hrs/week during term; CPT during studies; OPT 12 months post-study + 24-month STEM extension (total 36 months for STEM)",
+    stats: [
+      { label: "Partner Universities", value: "50+" },
+      { label: "Visa Success Rate", value: "89%" },
+      { label: "Students Placed", value: "800+" },
+      { label: "Avg Processing Time", value: "5 weeks" },
+    ],
+  },
+  "new-zealand": {
+    slug: "new-zealand",
+    name: "New Zealand",
+    fullName: "New Zealand",
+    tagline: "Quality education, breathtaking lifestyle, generous post-study work",
+    heroImage:
+      "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&w=1260",
+    flagEmoji: "🇳🇿",
+    overviewImage: "https://images.pexels.com/photos/552785/pexels-photo-552785.jpeg?auto=compress&cs=tinysrgb&w=800",
+    galleryImages: [
+      "https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/1366630/pexels-photo-1366630.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/210012/pexels-photo-210012.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/2335126/pexels-photo-2335126.jpeg?auto=compress&cs=tinysrgb&w=600",
+    ],
+    overview: {
+      description:
+        "All eight of New Zealand's universities rank in the global top 500, and the country consistently ranks among the world's safest and most peaceful. Combine that with up to 3 years of post-study work rights, a clear pathway to residency for skilled graduates, and unrivalled natural beauty — and you have one of the most balanced study destinations.",
+      highlights: [
+        "All 8 universities in QS Top 500",
+        "Post-Study Work Visa up to 3 years",
+        "Pathway to Skilled Migrant residency",
+        "Safe, peaceful, English-speaking",
+      ],
+      studentPopulation: "115,000+",
+      qualityRanking: "Top 20 in Asia-Pacific",
+    },
+    whyStudy: [
+      {
+        title: "British-Style, Globally Ranked",
+        description:
+          "New Zealand's universities follow the British model and all eight rank in the QS Top 500. Degrees are recognized across the Commonwealth and beyond.",
+      },
+      {
+        title: "Post-Study Work Visa",
+        description:
+          "Bachelor's and higher graduates can apply for a Post-Study Work Visa valid 1-3 years (depending on level and location of study), with full work rights and no employer restriction.",
+      },
+      {
+        title: "PR Pathway",
+        description:
+          "Skilled graduates with NZ work experience can apply for residency through the Skilled Migrant Category — one of the most transparent point-based PR systems in the world.",
+      },
+      {
+        title: "Safety & Lifestyle",
+        description:
+          "New Zealand consistently ranks among the world's safest, most peaceful, and most environmentally clean countries. An ideal environment for focused study and outdoor adventure.",
+      },
+    ],
+    universities: [
+      {
+        name: "University of Auckland",
+        location: "Auckland",
+        ranking: "Top 70 globally",
+        programs: ["Engineering", "Business", "Medicine", "Computer Science"],
+      },
+      {
+        name: "University of Otago",
+        location: "Dunedin",
+        ranking: "Top 220 globally",
+        programs: ["Health Sciences", "Dentistry", "Marine Biology", "Sciences"],
+      },
+      {
+        name: "Victoria University of Wellington",
+        location: "Wellington",
+        ranking: "Top 250 globally",
+        programs: ["Public Policy", "Architecture", "Law", "Film & Design"],
+      },
+      {
+        name: "University of Canterbury",
+        location: "Christchurch",
+        ranking: "Top 270 globally",
+        programs: ["Engineering", "Forestry", "Antarctic Studies", "Computer Science"],
+      },
+      {
+        name: "Massey University",
+        location: "Palmerston North / Auckland / Wellington",
+        ranking: "Top 290 globally",
+        programs: ["Veterinary Sciences", "Aviation", "Agriculture", "Design"],
+      },
+    ],
+    admissionRequirements: [
+      { title: "Academic Transcripts", details: "Recognized secondary qualification (UG) or bachelor's degree (PG); typically 60-65%+" },
+      { title: "English Proficiency", details: "IELTS 6.0-6.5+ (UG); 6.5-7.0+ (PG); TOEFL/PTE accepted" },
+      { title: "Personal Statement", details: "Brief statement of purpose for postgraduate programs" },
+      { title: "Letters of Recommendation", details: "1-2 academic or professional references (PG)" },
+      { title: "Financial Proof", details: "NZD 20,000/year for living expenses + tuition; FundView accounts accepted" },
+      { title: "Health Insurance", details: "Mandatory for the duration of study (university-recommended providers)" },
+    ],
+    costOfLiving: {
+      tuitionRange: "NZD 22,000 – 45,000 / year",
+      currency: "NZD",
+      scholarshipNote: "New Zealand Scholarships, university merit scholarships, and Manaaki NZ awards cover partial to full tuition for eligible students.",
+      items: [
+        { category: "Accommodation", range: "NZD 800 – 1,400 / month" },
+        { category: "Food & Groceries", range: "NZD 300 – 500 / month" },
+        { category: "Transportation", range: "NZD 100 – 180 / month" },
+        { category: "Health Insurance", range: "NZD 600 – 900 / year" },
+        { category: "Books & Supplies", range: "NZD 500 – 1,000 / year" },
+        { category: "Personal Expenses", range: "NZD 200 – 400 / month" },
+      ],
+    },
+    visaProcess: {
+      visaType: "Fee-Paying Student Visa",
+      processingTime: "4-8 weeks",
+      steps: [
+        { step: 1, title: "Offer of Place", description: "Receive an Offer of Place from a NZ-approved education provider" },
+        { step: 2, title: "Pay Tuition", description: "Pay the first year's tuition (or first instalment) and obtain receipt" },
+        { step: 3, title: "Financial Proof", description: "Show NZD 20,000/year for living costs (or sponsor undertaking)" },
+        { step: 4, title: "Health & Character", description: "Complete medical exam (if required) and police clearance certificates" },
+        { step: 5, title: "Submit Online Application", description: "Apply via Immigration NZ online portal with all supporting documents" },
+        { step: 6, title: "Decision & Travel", description: "Visa typically granted in 4-8 weeks; valid for the duration of your program" },
+      ],
+    },
+    workRights: "20 hrs/week during term, full-time during scheduled breaks; Post-Study Work Visa 1-3 years; pathway to Skilled Migrant residency",
+    stats: [
+      { label: "Partner Universities", value: "12+" },
+      { label: "Visa Success Rate", value: "93%" },
+      { label: "Students Placed", value: "350+" },
+      { label: "Avg Processing Time", value: "5 weeks" },
+    ],
+  },
+  singapore: {
+    slug: "singapore",
+    name: "Singapore",
+    fullName: "Singapore",
+    tagline: "Asia's education hub — NUS, NTU, and a global business gateway",
+    heroImage:
+      "https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1260",
+    flagEmoji: "🇸🇬",
+    overviewImage: "https://images.pexels.com/photos/783682/pexels-photo-783682.jpeg?auto=compress&cs=tinysrgb&w=800",
+    galleryImages: [
+      "https://images.pexels.com/photos/1842332/pexels-photo-1842332.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/3155666/pexels-photo-3155666.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/2049422/pexels-photo-2049422.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://images.pexels.com/photos/777059/pexels-photo-777059.jpeg?auto=compress&cs=tinysrgb&w=600",
+    ],
+    overview: {
+      description:
+        "Singapore is Asia's most globalized economy and a leading hub for finance, technology, and biomedical research. NUS and NTU consistently rank in the world's top 20, and the city-state's bilingual environment, safety, and direct connectivity to Asian markets make it an outstanding choice for career-driven students.",
+      highlights: [
+        "NUS & NTU in QS Top 20 globally",
+        "Tuition Grant scheme reduces fees significantly",
+        "Strategic gateway to Asian economies",
+        "World's safest city with English-medium instruction",
+      ],
+      studentPopulation: "75,000+",
+      qualityRanking: "Top 3 in Asia",
+    },
+    whyStudy: [
+      {
+        title: "World-Top Universities",
+        description:
+          "The National University of Singapore (NUS) and Nanyang Technological University (NTU) both rank in the global top 20 — Asia's strongest performers across engineering, business, and life sciences.",
+      },
+      {
+        title: "Tuition Grant Scheme",
+        description:
+          "MOE's Tuition Grant subsidizes a large share of tuition for international students who agree to a 3-year work bond with a Singapore-registered company after graduation.",
+      },
+      {
+        title: "Career Gateway to Asia",
+        description:
+          "Singapore is HQ for thousands of multinationals across finance, tech, pharma, and shipping — internships and graduate roles are abundant, and the city is a launchpad to broader Asian markets.",
+      },
+      {
+        title: "Safety & Quality of Life",
+        description:
+          "Consistently ranked the world's safest city, Singapore offers world-class infrastructure, public transport, healthcare, and a multicultural English-speaking environment.",
+      },
+    ],
+    universities: [
+      {
+        name: "National University of Singapore (NUS)",
+        location: "Singapore",
+        ranking: "Top 10 globally",
+        programs: ["Computer Science", "Business", "Engineering", "Medicine"],
+      },
+      {
+        name: "Nanyang Technological University (NTU)",
+        location: "Singapore",
+        ranking: "Top 20 globally",
+        programs: ["Engineering", "Business", "Materials Science", "Communication"],
+      },
+      {
+        name: "Singapore Management University (SMU)",
+        location: "Singapore",
+        ranking: "Top 600 globally",
+        programs: ["Business", "Accounting", "Law", "Information Systems"],
+      },
+      {
+        name: "Singapore University of Technology and Design (SUTD)",
+        location: "Singapore",
+        ranking: "Top 450 globally",
+        programs: ["Design", "Architecture", "Engineering", "Computing"],
+      },
+    ],
+    admissionRequirements: [
+      { title: "Academic Transcripts", details: "Strong record — top 10-20% of class for NUS/NTU competitive programs" },
+      { title: "Standardized Tests", details: "SAT/ACT often required for UG; GRE/GMAT for PG" },
+      { title: "English Proficiency", details: "IELTS 6.5-7.0+ or TOEFL 90-100+ iBT" },
+      { title: "Personal Statement", details: "Statement of purpose and program-specific essays" },
+      { title: "Letters of Recommendation", details: "2-3 academic references" },
+      { title: "Financial Proof", details: "Bank statement covering tuition + ~SGD 12,000/year for living expenses" },
+    ],
+    costOfLiving: {
+      tuitionRange: "SGD 17,000 – 50,000 / year (post Tuition Grant)",
+      currency: "SGD",
+      scholarshipNote: "MOE Tuition Grant, ASEAN Scholarship, NUS/NTU Global Merit Scholarships, and corporate sponsorships are widely available.",
+      items: [
+        { category: "Accommodation", range: "SGD 600 – 1,500 / month" },
+        { category: "Food & Groceries", range: "SGD 300 – 600 / month" },
+        { category: "Transportation", range: "SGD 80 – 150 / month" },
+        { category: "Health Insurance", range: "SGD 250 – 600 / year" },
+        { category: "Books & Supplies", range: "SGD 300 – 500 / year" },
+        { category: "Personal Expenses", range: "SGD 200 – 400 / month" },
+      ],
+    },
+    visaProcess: {
+      visaType: "Student Pass",
+      processingTime: "2-4 weeks",
+      steps: [
+        { step: 1, title: "University Acceptance", description: "Receive offer from a Singapore Institute of Higher Learning (IHL)" },
+        { step: 2, title: "Apply via SOLAR+", description: "University submits Student Pass application on your behalf via ICA's SOLAR+ system" },
+        { step: 3, title: "Medical & Documents", description: "Complete medical examination, prepare passport, photos, financial proof, and admission letter" },
+        { step: 4, title: "In-Principle Approval (IPA)", description: "Receive IPA letter from ICA — required to enter Singapore" },
+        { step: 5, title: "Arrival & Pass Issuance", description: "Travel to Singapore, complete formalities at ICA, and collect your Student Pass" },
+      ],
+    },
+    workRights: "16 hrs/week during term for full-time university students; full-time during scheduled vacations; post-study work options under Employment Pass / Tech.Pass",
+    stats: [
+      { label: "Partner Universities", value: "10+" },
+      { label: "Visa Success Rate", value: "97%" },
+      { label: "Students Placed", value: "250+" },
+      { label: "Avg Processing Time", value: "3 weeks" },
+    ],
+  },
 };

@@ -11,6 +11,9 @@ import {
 } from "@/lib/animations";
 import BorderGlow from "@/components/BorderGlow";
 import ShinyText from "@/components/ShinyText";
+import { getSupabaseBrowser } from "@/lib/supabase";
+
+type SubmitStatus = "idle" | "submitting" | "sent" | "error";
 
 const infoCards = [
   {
@@ -114,6 +117,9 @@ export default function ContactForm() {
     program: "",
     message: "",
   });
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [reference, setReference] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -123,8 +129,45 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === "submitting") return;
+    setStatus("submitting");
+    setErrorMsg(null);
+
+    try {
+      const supabase = getSupabaseBrowser();
+      const { data, error } = await supabase
+        .from("contact_enquiries")
+        .insert({
+          source: "academia",
+          full_name: formData.fullName.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim() || null,
+          country: formData.country || null,
+          program: formData.program || null,
+          message: formData.message.trim(),
+        })
+        .select("reference")
+        .single();
+
+      if (error) throw error;
+      setReference(data?.reference ?? null);
+      setStatus("sent");
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        country: "",
+        program: "",
+        message: "",
+      });
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(
+        err instanceof Error ? err.message : "Couldn't send your message."
+      );
+    }
   };
 
   const inputStyle: React.CSSProperties = {
@@ -456,12 +499,41 @@ export default function ContactForm() {
                   />
                 </div>
 
+                {/* Status messages */}
+                {status === "sent" && reference ? (
+                  <div
+                    className="rounded-2xl px-4 py-3 text-sm"
+                    style={{
+                      background: "rgba(215,190,89,0.08)",
+                      border: "1px solid rgba(215,190,89,0.3)",
+                      color: "#f5ecc8",
+                    }}
+                  >
+                    Thanks — we&apos;ve received your message. Reference{" "}
+                    <span className="font-mono font-semibold">{reference}</span>
+                    . A counsellor will reach out within 24 hours.
+                  </div>
+                ) : null}
+                {status === "error" ? (
+                  <div
+                    className="rounded-2xl px-4 py-3 text-sm"
+                    style={{
+                      background: "rgba(220,80,80,0.08)",
+                      border: "1px solid rgba(220,80,80,0.3)",
+                      color: "#f3c8c8",
+                    }}
+                  >
+                    {errorMsg ?? "Something went wrong. Please try again."}
+                  </div>
+                ) : null}
+
                 {/* Submit */}
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full font-semibold text-base py-4 rounded-full transition-all duration-300"
+                  disabled={status === "submitting"}
+                  whileHover={status === "submitting" ? undefined : { scale: 1.02 }}
+                  whileTap={status === "submitting" ? undefined : { scale: 0.98 }}
+                  className="w-full font-semibold text-base py-4 rounded-full transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
                   style={{
                     background:
                       "linear-gradient(180deg, #e5d285 0%, #d7be59 40%, #c4a940 100%)",
@@ -472,7 +544,11 @@ export default function ContactForm() {
                     cursor: "pointer",
                   }}
                 >
-                  Send Message
+                  {status === "submitting"
+                    ? "Sending…"
+                    : status === "sent"
+                      ? "Sent ✓"
+                      : "Send Message"}
                 </motion.button>
               </form>
             </BorderGlow>

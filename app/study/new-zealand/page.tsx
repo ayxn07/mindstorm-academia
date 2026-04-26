@@ -15,50 +15,49 @@ import FloatingApplyButton from "@/components/study/FloatingApplyButton";
 const BASE_URL = "https://www.mindstormglobaledu.com";
 
 export const metadata: Metadata = {
-  title: "Study in Australia",
+  title: "Study in New Zealand",
   description:
-    "Complete guide to studying in Australia — top universities, admission requirements, visa process, costs, and work rights. Expert guidance from Mindstorm.",
+    "Complete guide to studying in New Zealand — top-ranked universities, post-study work visa up to 3 years, skilled migrant residency pathway, and a world-class lifestyle.",
   keywords: [
-    "study in Australia",
-    "Australia student visa",
-    "Australian universities",
-    "student visa subclass 500",
-    "study abroad Australia",
-    "undergraduate Australia",
-    "postgraduate Australia",
-    "Australian education",
-    "work while studying Australia",
+    "study in New Zealand",
+    "NZ universities",
+    "Post-Study Work Visa NZ",
+    "University of Auckland",
+    "New Zealand student visa",
+    "Skilled Migrant Category",
+    "study abroad New Zealand",
+    "Manaaki NZ scholarship",
   ],
   alternates: {
-    canonical: `${BASE_URL}/study/australia`,
+    canonical: `${BASE_URL}/study/new-zealand`,
   },
   openGraph: {
-    title: "Study in Australia | Mindstorm Strategic Consulting",
+    title: "Study in New Zealand | Mindstorm Strategic Consulting",
     description:
-      "Top universities, admission requirements, visa process, costs, and work rights — everything you need to study in Australia.",
-    url: `${BASE_URL}/study/australia`,
+      "Top-ranked NZ universities and the Post-Study Work Visa — admissions, costs, and visa process.",
+    url: `${BASE_URL}/study/new-zealand`,
     type: "website",
     images: [
       {
         url: "/MindStorm Global 256x256.png",
         width: 256,
         height: 256,
-        alt: "Study in Australia with Mindstorm",
+        alt: "Study in New Zealand with Mindstorm",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Study in Australia | Mindstorm Strategic Consulting",
+    title: "Study in New Zealand | Mindstorm Strategic Consulting",
     description:
-      "Top universities, admission requirements, visa process, costs, and work rights — everything you need to study in Australia.",
+      "Top-ranked NZ universities and the Post-Study Work Visa — admissions, costs, and visa process.",
     images: ["/MindStorm Global 256x256.png"],
   },
 };
 
-const country = countries.australia;
+const country = countries["new-zealand"];
 
-export default function AustraliaPage() {
+export default function NewZealandPage() {
   return (
     <>
       <CountryHero country={country} />
@@ -71,7 +70,7 @@ export default function AustraliaPage() {
       <CountryCTA country={country} />
       <TestimonialsMasonry />
       <FAQAccordion />
-      <FloatingApplyButton countrySlug="australia" countryName="Australia" />
+      <FloatingApplyButton countrySlug="new-zealand" countryName="New Zealand" />
     </>
   );
 }

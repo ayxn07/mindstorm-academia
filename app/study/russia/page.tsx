@@ -10,6 +10,7 @@ import VisaProcess from "@/components/study/VisaProcess";
 import CountryCTA from "@/components/study/CountryCTA";
 import TestimonialsMasonry from "@/components/testimonials/TestimonialsMasonry";
 import FAQAccordion from "@/components/faq/FAQAccordion";
+import FloatingApplyButton from "@/components/study/FloatingApplyButton";
 
 const BASE_URL = "https://www.mindstormglobaledu.com";
 
@@ -70,6 +71,7 @@ export default function RussiaPage() {
       <CountryCTA country={country} />
       <TestimonialsMasonry />
       <FAQAccordion />
+      <FloatingApplyButton countrySlug="russia" countryName="Russia" />
     </>
   );
 }
