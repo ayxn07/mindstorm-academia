@@ -56,37 +56,39 @@ function MegaMenu({ onMouseEnter, onMouseLeave, onSelect }: { onMouseEnter: () =
       transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="absolute top-full left-1/2 -translate-x-1/2 mt-4 z-50"
-      style={{ width: "min(95vw, 1100px)" }}
+      className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-2xl p-6 z-50"
+      style={{
+        ...megaMenuStyle,
+        width: "min(95vw, 1100px)",
+      }}
     >
-      <BorderGlow
-        backgroundColor="#0d0c0a"
-        borderRadius={16}
-        glowColor="45 70 60"
-        colors={["#d7be59", "#e5d285", "#b89e3a"]}
-        edgeSensitivity={3}
-        glowRadius={25}
-        glowIntensity={3}
-        coneSpread={30}
-        animated
-      >
-        <div className="relative rounded-2xl p-6" style={megaMenuStyle}>
-          {/* Top shine */}
-          <div
-            className="absolute inset-x-4 top-0 h-px pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent 0%, rgba(215,190,89,0.2) 30%, rgba(255,255,255,0.1) 50%, rgba(215,190,89,0.2) 70%, transparent 100%)",
-            }}
-          />
+      {/* Top shine */}
+      <div
+        className="absolute inset-x-4 top-0 h-px pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 0%, rgba(215,190,89,0.2) 30%, rgba(255,255,255,0.1) 50%, rgba(215,190,89,0.2) 70%, transparent 100%)",
+        }}
+      />
 
-          <div className="grid grid-cols-5 gap-4">
-            {countryMeta.map((country) => (
+      <div className="grid grid-cols-5 gap-4">
+        {countryMeta.map((country) => (
+          <BorderGlow
+            key={country.name}
+            backgroundColor="#0d0c0a"
+            borderRadius={30}
+            glowColor="45 70 60"
+            colors={["#d7be59", "#e5d285", "#b89e3a"]}
+            edgeSensitivity={3}
+            glowRadius={25}
+            glowIntensity={3}
+            coneSpread={30}
+          >
             <Link
-              key={country.name}
               href={country.href}
               onClick={onSelect}
-              className="group block p-3 h-full rounded-2xl transition-colors duration-300 hover:bg-white/[0.04]"
+              className="group block p-3 h-full"
+              style={{ borderRadius: 30 }}
             >
               {/* Country image */}
               <div className="relative h-24 rounded-lg overflow-hidden mb-3">
@@ -186,10 +188,9 @@ function MegaMenu({ onMouseEnter, onMouseLeave, onSelect }: { onMouseEnter: () =
                 </svg>
               </div>
             </Link>
-            ))}
-          </div>
-        </div>
-      </BorderGlow>
+          </BorderGlow>
+        ))}
+      </div>
     </motion.div>
   );
 }
