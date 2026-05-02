@@ -15,7 +15,31 @@ import { getSupabaseBrowser } from "@/lib/supabase";
 
 type SubmitStatus = "idle" | "submitting" | "sent" | "error";
 
-const infoCards = [
+type InfoCard = {
+  title: string;
+  detail?: string;
+  icon: React.ReactNode;
+  custom?: React.ReactNode;
+};
+
+const instagramIcon = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#d7be59"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
+const infoCards: InfoCard[] = [
   {
     title: "Office Address",
     detail: "Mindstorm Strategic Consulting FZ-LLC, Dubai, UAE",
@@ -89,6 +113,32 @@ const infoCards = [
         <circle cx="12" cy="12" r="10" />
         <polyline points="12 6 12 12 16 14" />
       </svg>
+    ),
+  },
+  {
+    title: "Follow Us",
+    icon: instagramIcon,
+    custom: (
+      <div className="flex flex-col gap-1.5">
+        <a
+          href="https://www.instagram.com/mindstorm.global.services?igsh=MWU0MW0zd2sxMnZkdQ=="
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm leading-relaxed transition-colors hover:text-[#d7be59]"
+          style={{ color: "#999" }}
+        >
+          @mindstorm.global.services
+        </a>
+        <a
+          href="https://www.instagram.com/mindstorm.marketing?igsh=MXFqanJucXltbjRxNQ=="
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm leading-relaxed transition-colors hover:text-[#d7be59]"
+          style={{ color: "#999" }}
+        >
+          @mindstorm.marketing
+        </a>
+      </div>
     ),
   },
 ];
@@ -279,12 +329,16 @@ export default function ContactForm() {
                       >
                         {card.title}
                       </h4>
-                      <p
-                        className="text-sm leading-relaxed"
-                        style={{ color: "#999" }}
-                      >
-                        {card.detail}
-                      </p>
+                      {card.custom ? (
+                        card.custom
+                      ) : (
+                        <p
+                          className="text-sm leading-relaxed"
+                          style={{ color: "#999" }}
+                        >
+                          {card.detail}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </BorderGlow>

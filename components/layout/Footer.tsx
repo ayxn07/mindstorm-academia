@@ -67,9 +67,37 @@ export default function Footer() {
               Empowering students with access to global education opportunities
               through structured, transparent, and professional guidance.
             </p>
-            <div className="flex items-center gap-2 text-xs text-[var(--color-text-dim)]">
+            <div className="flex items-center gap-2 text-xs text-[var(--color-text-dim)] mb-6">
               <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse" />
               Dubai &middot; Bangalore &middot; Mohali
+            </div>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.instagram.com/mindstorm.global.services?igsh=MWU0MW0zd2sxMnZkdQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Mindstorm Global Services on Instagram"
+                className="group flex items-center justify-center w-9 h-9 rounded-full border border-[var(--glass-border)] bg-white/5 text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)]/40 transition-colors duration-200"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/mindstorm.marketing?igsh=MXFqanJucXltbjRxNQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Mindstorm Marketing on Instagram"
+                className="group flex items-center justify-center w-9 h-9 rounded-full border border-[var(--glass-border)] bg-white/5 text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)]/40 transition-colors duration-200"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
             </div>
           </motion.div>
 
